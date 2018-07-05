@@ -1,0 +1,19 @@
+{
+	"apiVersion": "1",
+	"version": "@project.version@",
+	"provider": {
+		"name": "ADAMOS GmbH"
+	},
+	"isolation": "PER_TENANT",
+	"scale": "NONE",
+	"requiredRoles": [
+		"ROLE_EVENT_READ",
+		"ROLE_EVENT_ADMIN",
+		"ROLE_INVENTORY_ADMIN",
+		"ROLE_INVENTORY_READ",
+		"ROLE_INVENTORY_CREATE",
+		"ROLE_MEASUREMENT_ADMIN",
+		"ROLE_MEASUREMENT_READ"
+	],
+	"roles": []
+}

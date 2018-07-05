@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.adamos</groupId>
+	<artifactId>digitalwp</artifactId>
+	<version>0.0.9-SNAPSHOT</version>
+	<name>digitalwp</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.7.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<spring-boot-dependencies.version>1.5.7.RELEASE</spring-boot-dependencies.version>
+		<main.class>com.adamos.digitalworkpiece.App</main.class>
+	</properties>
+
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>9.4.11.v20180605</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util-ajax</artifactId>
+			<version>9.4.11.v20180605</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nsn.cumulocity.clients-java</groupId>
+			<artifactId>microservice-autoconfigure</artifactId>
+			<version>9.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nsn.cumulocity.model</groupId>
+			<artifactId>device-capability-model</artifactId>
+			<version>9.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.nsn.cumulocity.model</groupId>
+			<artifactId>core-model</artifactId>
+			<version>9.5.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>fluent-hc</artifactId>
+			<version>4.5.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot-dependencies.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>${main.class}</mainClass>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.nsn.cumulocity.clients-java</groupId>
+				<artifactId>microservice-package-maven-plugin</artifactId>
+				<version>9.5.0</version>
+				<executions>
+					<execution>
+						<id>package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>package</goal>
+						</goals>
+						<configuration>
+							<name>digitalwp</name>
+							<encoding>UTF-8</encoding>
+							<rpmSkip>true</rpmSkip>
+							<containerSkip>false</containerSkip>
+						</configuration>
+					</execution>
+					<execution>
+						<id>microservice-package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>microservice-package</goal>
+						</goals>
+						<configuration>
+							<name>digitalwp</name>
+							<image>digitalwp</image>
+							<encoding>UTF-8</encoding>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>cumulocity</id>
+			<layout>default</layout>
+			<url>http://download.cumulocity.com/maven/repository</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>public</id>
+			<url>http://download.cumulocity.com/maven/repository</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+
+
+</project>
